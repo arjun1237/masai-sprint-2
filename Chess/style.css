@@ -85,12 +85,16 @@ h1{
     border-radius: 1px;
 }
 
-.other-cell{
+.green-cell{
     background-color: #639c56;
 }
 
-.red-cell{
+.white-cell{
     background-color: #dbdbdb;
+}
+
+.moves-highlight{
+    background-image: radial-gradient(red, #ffffff00, #ffffff00, #ffffff00);
 }
 
 

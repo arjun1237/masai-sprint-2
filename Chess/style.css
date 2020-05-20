@@ -1,0 +1,150 @@
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+}
+
+h1{
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.chess-board i{
+    position: absolute;
+    cursor: grab;
+}
+
+.taken{
+    pointer-events: none;
+}
+
+.chess-board i:active{
+    cursor: grabbing;
+}
+
+.red-color{
+    color: #ac2525;
+}
+
+.black-color{
+    color: #2a2a2a;
+}
+
+.yellow-bg{
+    background-color: yellow;
+}
+
+.main{
+    display: flex;
+}
+
+.pawn-padding{
+    padding: 11px 23px 10px 22px;
+}
+
+.bishop-padding{
+    padding: 10px 23px 10px 22px;
+}
+
+.padding-rook-knight{
+    padding: 10px 20px;
+}
+
+.padding-king{
+    padding: 10px 18px 10px 17px;
+}
+
+.padding-queen{
+    padding: 10px 15px;
+}
+
+.main > div:first-child{
+    flex: 1 1 auto;
+}
+
+.main > div:last-child{
+    flex: 1 1 auto;
+}
+
+.chess-board{
+    display: grid;
+    grid-template-columns: repeat(8, 70px);
+    /* grid-gap: 5px; */
+    grid-auto-rows: 60px;
+    background-color: #30452b;
+    padding: 20px;
+    width: fit-content;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 5px;
+}
+
+.chess-cell{
+    cursor: all-scroll;
+    border-radius: 1px;
+}
+
+.other-cell{
+    background-color: #639c56;
+}
+
+.red-cell{
+    background-color: #dbdbdb;
+}
+
+
+/* ----------------------------------------- */
+/* chess pieces position */
+
+.fas{
+    font-size: 40px;
+}
+
+.black1{
+    top: 32px;
+}
+
+.black2{
+    top: 92px;
+}
+
+.pos3{
+    left: 183px;
+}
+
+.pos6{
+    right: 183px;
+}
+
+.pos1{
+    left: 40px;
+}
+
+.pos8{
+    right: 40px;
+}
+
+.pos2{
+    left: 110px;
+}
+
+.pos7{
+    right: 110px;
+}
+
+.pos-top-right{
+    right: 247px;
+}
+
+.pos-top-left{
+    left: 245px;
+}
+
+.pos4{
+    left: 253px;
+}
+
+.pos5{
+    right: 253px;
+}

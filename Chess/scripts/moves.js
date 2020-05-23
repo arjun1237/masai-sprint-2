@@ -160,6 +160,8 @@ pieceInfo = {
     },
 };
 
+previousProjections = []
+
 
 function getRookMoves(current, isRed){
     current = current.split('')
@@ -183,9 +185,6 @@ function getRookMoves(current, isRed){
 }
 
 function getQueenMoves(current, isRed){
-
-    
-
 }
 
 function getKingMoves(current, isRed){
@@ -193,17 +192,40 @@ function getKingMoves(current, isRed){
 }
 
 function getKnightMoves(current, isRed){
-
 }
 
 function getBishopMoves(current, isRed){
-
+    moves = []
+    var str = 'abcdefgh'
+    var index = str.indexOf(current[0])
+    var char = str.charAt(index-Number(current[1])+1)
+    for(var i=1; i<=8; i++){
+        
+    }
+    return moves
 }
 
 function getPawnMoves(current, isRed, isFirstMove){
     
 }
 
-function filterMoves(isRed, moves){
+function filterMoves(moves, isRed){
+    projectMoves(moves)
+    return moves
+}
 
+function removeProjections(){
+    for(var i=0; i<previousProjections.length; i++){
+        var elem = document.getElementById(previousProjections[i])
+        elem.className = elem.className.replace(' moves-highlight', '').replace('moves-highlight ', '')
+    }
+}
+
+function projectMoves(moves){
+    removeProjections()
+    for(var i =0; i<moves.length; i++){
+        var elem = document.getElementById(moves[i])
+        elem.className += ' moves-highlight'
+    }
+    previousProjections = [...moves]
 }

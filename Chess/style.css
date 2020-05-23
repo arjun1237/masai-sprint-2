@@ -94,7 +94,9 @@ h1{
 }
 
 .moves-highlight{
-    background-image: radial-gradient(red, #ffffff00, #ffffff00, #ffffff00);
+    outline: 4px solid yellow;
+    outline-offset: -6px;
+    background-image: radial-gradient(#ff5943, #ffffff00,  #ffffff00, #ffffff00, #ffffff00, #ffffff00);
 }
 
 

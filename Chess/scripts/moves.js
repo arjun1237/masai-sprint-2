@@ -160,72 +160,91 @@ pieceInfo = {
     },
 };
 
-previousProjections = []
+previousProjections = [];
 
-
-function getRookMoves(current, isRed){
-    current = current.split('')
-    var moves = []
-    for(var i=1; i<=8; i++){
-        if(Number(current[1]) === i){
-            continue
+function getRookMoves(current, isRed) {
+    current = current.split("");
+    var moves = [];
+    for (var i = 1; i <= 8; i++) {
+        if (Number(current[1]) === i) {
+            continue;
         }
-        moves.push(current[0] + i)
+        moves.push(current[0] + i);
     }
 
-    var str = 'abcdefgh'
-    for(var i=0; i<str.length; i++){
-        if(str[i] === current[0]){
-            continue
+    var str = "abcdefgh";
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] === current[0]) {
+            continue;
         }
-        moves.push(str[i] + current[1])
+        moves.push(str[i] + current[1]);
     }
 
-    return filterMoves(moves, isRed)
+    return filterMoves(moves, isRed);
 }
 
-function getQueenMoves(current, isRed){
+function getQueenMoves(current, isRed) {
+    var bishopMoves = getBishopMoves(current, isRed);
+    var rookMoves = getRookMoves(current, isRed);
+
+    return [...bishopMoves, ...rookMoves];
 }
 
-function getKingMoves(current, isRed){
-
+function getKingMoves(current, isRed) {
+    moves = [];
 }
 
-function getKnightMoves(current, isRed){
-}
+function getKnightMoves(current, isRed) {}
 
-function getBishopMoves(current, isRed){
-    moves = []
-    var str = 'abcdefgh'
-    var index = str.indexOf(current[0])
-    var char = str.charAt(index-Number(current[1])+1)
-    for(var i=1; i<=8; i++){
-        
+function getBishopMoves(current, isRed) {
+    moves = [];
+    var str = "abcdefgh";
+    var col = str.indexOf(current[0]);
+    var row = Number(current[1]);
+    var len = str.length;
+    // var char = str.charAt(index-Number(current[1])+1)
+    for (var i = col + 1, j = row + 1, k = row - 1; i < len; i++, k--, j++) {
+        var new_col = str.charAt(i);
+        if (j <= 8) {
+            moves.push(new_col + j);
+        }
+        if (k > 0) {
+            moves.push(new_col + k);
+        }
     }
-    return moves
+    for (var i = col - 1, j = row + 1, k = row - 1; i >= 0; i--, k--, j++) {
+        var new_col = str.charAt(i);
+        if (j <= 8) {
+            moves.push(new_col + j);
+        }
+        if (k > 0) {
+            moves.push(new_col + k);
+        }
+    }
+    return filterMoves(moves, isRed);
 }
 
-function getPawnMoves(current, isRed, isFirstMove){
-    
+function getPawnMoves(current, isRed, isFirstMove) {}
+
+function filterMoves(moves, isRed) {
+    // projectMoves(moves)
+    return moves;
 }
 
-function filterMoves(moves, isRed){
-    projectMoves(moves)
-    return moves
-}
-
-function removeProjections(){
-    for(var i=0; i<previousProjections.length; i++){
-        var elem = document.getElementById(previousProjections[i])
-        elem.className = elem.className.replace(' moves-highlight', '').replace('moves-highlight ', '')
+function removeProjections() {
+    for (var i = 0; i < previousProjections.length; i++) {
+        var elem = document.getElementById(previousProjections[i]);
+        elem.className = elem.className
+            .replace(" moves-highlight", "")
+            .replace("moves-highlight ", "");
     }
 }
 
-function projectMoves(moves){
-    removeProjections()
-    for(var i =0; i<moves.length; i++){
-        var elem = document.getElementById(moves[i])
-        elem.className += ' moves-highlight'
+function projectMoves(moves) {
+    removeProjections();
+    for (var i = 0; i < moves.length; i++) {
+        var elem = document.getElementById(moves[i]);
+        elem.className += " moves-highlight";
     }
-    previousProjections = [...moves]
+    previousProjections = [...moves];
 }

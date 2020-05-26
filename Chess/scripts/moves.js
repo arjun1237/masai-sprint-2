@@ -227,40 +227,40 @@ function getKingMoves(current, isRed) {
 }
 
 function getKnightMoves(current, isRed) {
-    var moves = []
-    var row = current[1]
-    var col = current[0]
-    var colNum = colNames.indexOf(col)
-    var nxtCol = colNames.charAt(colNum+1)
-    var prevCol = colNames.charAt(colNum-1)
-    var nxtNxtCol = colNames.charAt(colNum+2)
-    var prevPrevCol = colNames.charAt(colNum-2)
+    var moves = [];
+    var row = current[1];
+    var col = current[0];
+    var colNum = colNames.indexOf(col);
+    var nxtCol = colNames.charAt(colNum + 1);
+    var prevCol = colNames.charAt(colNum - 1);
+    var nxtNxtCol = colNames.charAt(colNum + 2);
+    var prevPrevCol = colNames.charAt(colNum - 2);
 
-    for(var i= row-2, j=0; j<= 4; i++, j++){
-        if(j == 2){
-            continue
+    for (var i = row - 2, j = 0; j <= 4; i++, j++) {
+        if (j == 2) {
+            continue;
         }
-        if(i > 0 && i<=8){
-            if(j === 0 || j == 4){
-                if(nxtCol !== ''){
-                    moves.push(nxtCol + i)
+        if (i > 0 && i <= 8) {
+            if (j === 0 || j == 4) {
+                if (nxtCol !== "") {
+                    moves.push(nxtCol + i);
                 }
-                if(prevCol !== ''){
-                    moves.push(prevCol + i)
+                if (prevCol !== "") {
+                    moves.push(prevCol + i);
                 }
             }
-            if(j== 1 || j == 3){
-                if(nxtNxtCol !== ''){
-                    moves.push(nxtNxtCol + i)
+            if (j == 1 || j == 3) {
+                if (nxtNxtCol !== "") {
+                    moves.push(nxtNxtCol + i);
                 }
-                if(prevPrevCol !== ''){
-                    moves.push(prevPrevCol + i)
+                if (prevPrevCol !== "") {
+                    moves.push(prevPrevCol + i);
                 }
             }
         }
     }
 
-    return filterMoves(moves, isRed)
+    return filterMoves(moves, isRed);
 }
 
 function getBishopMoves(current, isRed) {
@@ -358,7 +358,9 @@ function filterMoves(moves, isRed) {
 // removes all highlights of moves
 function removeProjections() {
     for (var i = 0; i < previousProjections.length; i++) {
-        document.getElementById(previousProjections[i]).classList.remove('moves-highlight')
+        document
+            .getElementById(previousProjections[i])
+            .classList.remove("moves-highlight");
     }
 }
 
@@ -366,7 +368,7 @@ function removeProjections() {
 function projectMoves(moves) {
     removeProjections();
     for (var i = 0; i < moves.length; i++) {
-        document.getElementById(moves[i]).classList.add('moves-highlight')
+        document.getElementById(moves[i]).classList.add("moves-highlight");
     }
     previousProjections = [...moves];
 }

@@ -43,14 +43,16 @@ function createChess() {
                 div.setAttribute("class", "chess-cell green-cell");
             }
             div.id = String.fromCharCode(97 + j) + (8 - i);
-            if (i === 0 || i === 1 || i === 6 || i === 7) {
-                div.classList.add("taken");
-            }
+
+            // taken class - pointer events set as none
+            // if (i === 0 || i === 1 || i === 6 || i === 7) {
+            //     div.classList.add("taken");
+            // }
+            
             div.addEventListener("click", removeHighlight);
             board.append(div);
         }
     }
-
     createPieces(true);
     createPieces(false);
 }
@@ -70,6 +72,7 @@ function createPieces(isred) {
 
     insertBeforeMany(pieces1, parent, cell);
     insertBeforeMany(pieces2, parent, cell);
+    // parent.append(pieces1, pieces2)
 }
 
 function addEvents(pieces) {
